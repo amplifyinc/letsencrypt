@@ -11,5 +11,7 @@ RUN wget https://github.com/xenolf/lego/releases/download/v1.2.1/lego_v1.2.1_lin
     tar -xvf lego_v1.2.1_linux_amd64.tar.gz
 
 FROM ubuntu:16.04
+RUN apt-get update -y
+RUN apt-get install apt-transport-https -y
 COPY --from=installer /usr/bin/kubectl /usr/bin/kubectl
 COPY --from=installer lego /usr/bin/lego
